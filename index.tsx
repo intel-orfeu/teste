@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
+import { ThemeProvider } from './lib/theme-provider';
+import { FontProvider } from './lib/font-provider';
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
@@ -10,6 +12,10 @@ if (!rootElement) {
 const root = ReactDOM.createRoot(rootElement);
 root.render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider defaultTheme="light" storageKey="synapse-theme-light">
+      <FontProvider defaultFont="manrope" storageKey="synapse-font">
+        <App />
+      </FontProvider>
+    </ThemeProvider>
   </React.StrictMode>
 );

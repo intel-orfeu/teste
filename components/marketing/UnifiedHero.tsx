@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { HlsVideo } from '../ui/hls-video';
-import { ChevronDown, Menu, X, Command, Ear, ScanSearch, Waypoints, ArrowRight } from 'lucide-react';
+import { ChevronDown, Menu, X, Command, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatedAudioWave, AnimatedNeuralNet, AnimatedWorkflowList } from '../ui/animated-icons';
 
-const VIDEO_URL = "https://customer-cbeadsgr09pnsezs.cloudflarestream.com/257c7359efd4b4aaebcc03aa8fc78a36/manifest/video.m3u8";
-const POSTER_URL = "https://customer-cbeadsgr09pnsezs.cloudflarestream.com/257c7359efd4b4aaebcc03aa8fc78a36/thumbnails/thumbnail.jpg";
+const VIDEO_URL = "https://stream.mux.com/4IMYGcL01xjs7ek5ANO17JC4VQVUTsojZlnw4fXzwSxc.m3u8";
+const POSTER_URL = "";
 
 export default function UnifiedHeroSection() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -28,33 +29,34 @@ export default function UnifiedHeroSection() {
     return (
         <section className="relative w-full min-h-screen bg-[#070612] font-['Manrope',sans-serif] text-white">
             <style>{`
-                @import url('https://fonts.googleapis.com/css2?family=Cabin:wght@500;600;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@500;600;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap');
                 
-                .font-heading { font-family: 'Inter', sans-serif; }
-                .font-accent { font-family: 'Instrument Serif', serif; }
-                .font-ui { font-family: 'Cabin', sans-serif; }
+                .font - heading { font - family: 'Inter', sans - serif; }
+                .font - accent { font - family: 'Instrument Serif', serif; }
+                .font - ui { font - family: 'Cabin', sans - serif; }
 
-                .glass-card {
-                    background: rgba(85, 80, 110, 0.4);
-                    border: 1px solid rgba(164, 132, 215, 0.5);
-                    backdrop-filter: blur(16px);
-                }
-            `}</style>
+                .glass - card {
+    background: rgba(85, 80, 110, 0.4);
+    border: 1px solid rgba(164, 132, 215, 0.5);
+    backdrop - filter: blur(16px);
+}
+`}</style>
 
             {/* Background Video with Black Overlay */}
             <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
                 <HlsVideo
                     src={VIDEO_URL}
                     poster={POSTER_URL}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full origin-left scale-125 md:ml-[200px]"
                 />
                 <div className="absolute inset-0 bg-black/60" />
+                <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-[#070612] to-transparent z-10 pointer-events-none" />
             </div>
 
             {/* Navbar */}
             <header
-                className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b border-transparent ${scrolled ? 'bg-[#070612]/80 backdrop-blur-md border-white/10 py-4' : 'bg-transparent py-6'
-                    }`}
+                className={`fixed top - 0 left - 0 w - full z - 50 transition - all duration - 300 border - b border - transparent ${scrolled ? 'bg-[#070612]/80 backdrop-blur-md border-white/10 py-4' : 'bg-transparent py-6'
+                    } `}
             >
                 <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between">
                     {/* Logo */}
@@ -211,7 +213,7 @@ export default function UnifiedHeroSection() {
                         className="glass-card rounded-3xl p-8 flex flex-col group hover:bg-[rgba(85,80,110,0.6)] transition-all duration-300"
                     >
                         <div className="w-14 h-14 rounded-2xl flex items-center justify-center bg-[#7b39fc]/20 border border-[#7b39fc]/30 mb-6 group-hover:scale-110 transition-transform">
-                            <Ear className="w-7 h-7 text-[#7b39fc]" />
+                            <AnimatedAudioWave className="w-7 h-7 text-[#7b39fc]" />
                         </div>
                         <h3 className="font-heading font-semibold text-xl text-white tracking-tight mb-3">Escuta Inteligente</h3>
                         <p className="text-sm text-white/70 font-medium leading-relaxed">
@@ -226,7 +228,7 @@ export default function UnifiedHeroSection() {
                         className="glass-card rounded-3xl p-8 flex flex-col group hover:bg-[rgba(85,80,110,0.6)] transition-all duration-300"
                     >
                         <div className="w-14 h-14 rounded-2xl flex items-center justify-center bg-[#f87b52]/20 border border-[#f87b52]/30 mb-6 group-hover:scale-110 transition-transform">
-                            <ScanSearch className="w-7 h-7 text-[#f87b52]" />
+                            <AnimatedNeuralNet className="w-7 h-7 text-[#f87b52]" />
                         </div>
                         <h3 className="font-heading font-semibold text-xl text-white tracking-tight mb-3">Análise Contextual</h3>
                         <p className="text-sm text-white/70 font-medium leading-relaxed">
@@ -241,7 +243,7 @@ export default function UnifiedHeroSection() {
                         className="glass-card rounded-3xl p-8 flex flex-col group hover:bg-[rgba(85,80,110,0.6)] transition-all duration-300"
                     >
                         <div className="w-14 h-14 rounded-2xl flex items-center justify-center bg-cyan-400/20 border border-cyan-400/30 mb-6 group-hover:scale-110 transition-transform">
-                            <Waypoints className="w-7 h-7 text-cyan-400" />
+                            <AnimatedWorkflowList className="w-7 h-7 text-cyan-400" />
                         </div>
                         <h3 className="font-heading font-semibold text-xl text-white tracking-tight mb-3">Ação Automática</h3>
                         <p className="text-sm text-white/70 font-medium leading-relaxed">

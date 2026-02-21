@@ -13,7 +13,7 @@ export const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [fontMenuOpen, setFontMenuOpen] = useState(false);
   const fontMenuRef = useRef<HTMLDivElement>(null);
-  
+
   const navigate = useNavigate();
   const { theme, setTheme } = useTheme();
   const { font, setFont } = useFont();
@@ -21,7 +21,7 @@ export const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
-    
+
     // Close dropdown on click outside
     const handleClickOutside = (event: MouseEvent) => {
       if (fontMenuRef.current && !fontMenuRef.current.contains(event.target as Node)) {
@@ -65,8 +65,8 @@ export const Navbar = () => {
         transition={{ duration: 0.5 }}
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b",
-          scrolled 
-            ? "bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-slate-200 dark:border-white/10 py-3 shadow-sm dark:shadow-none" 
+          scrolled
+            ? "bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-slate-200 dark:border-white/10 py-3 shadow-sm dark:shadow-none"
             : "bg-transparent border-transparent py-5"
         )}
       >
@@ -74,17 +74,17 @@ export const Navbar = () => {
           <div className="flex items-center gap-4 cursor-pointer group" onClick={() => navigate('/')}>
             {/* Animated Logo Component - Increased Size */}
             <div className="relative w-14 h-14 flex items-center justify-center">
-               <div className="absolute inset-0 bg-cyan-500/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-               <SynapseLogo className="w-16 h-16 text-slate-900 dark:text-white relative z-10" />
+              <div className="absolute inset-0 bg-cyan-500/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <SynapseLogo className="w-16 h-16 text-slate-900 dark:text-white relative z-10" />
             </div>
-            
+
             {/* Text Branding */}
             <div className="flex flex-col justify-center">
               <span className="font-bold text-xl tracking-tight leading-none text-slate-900 dark:text-white">
                 Synapse<span className="text-cyan-600 dark:text-cyan-400">.AI</span>
               </span>
               <span className="text-[10px] uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400 font-semibold mt-1">
-                Intelligence Hub
+                Hub de Inteligência
               </span>
             </div>
           </div>
@@ -92,9 +92,9 @@ export const Navbar = () => {
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a 
-                key={link.name} 
-                href={link.href} 
+              <a
+                key={link.name}
+                href={link.href}
                 className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors"
               >
                 {link.name}
@@ -131,8 +131,8 @@ export const Navbar = () => {
                         }}
                         className={cn(
                           "w-full px-3 py-2 text-sm text-left rounded-lg flex items-center justify-between transition-colors",
-                          font === f.id 
-                            ? "bg-cyan-50 dark:bg-cyan-950/30 text-cyan-600 dark:text-cyan-400 font-medium" 
+                          font === f.id
+                            ? "bg-cyan-50 dark:bg-cyan-950/30 text-cyan-600 dark:text-cyan-400 font-medium"
                             : "text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/5"
                         )}
                       >
@@ -159,13 +159,13 @@ export const Navbar = () => {
 
           {/* Mobile Toggle */}
           <div className="flex items-center gap-4 md:hidden">
-             <button
+            <button
               onClick={toggleTheme}
               className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 transition-colors"
             >
               {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
-            <button 
+            <button
               className="text-slate-900 dark:text-slate-300"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
@@ -186,8 +186,8 @@ export const Navbar = () => {
           >
             <div className="flex flex-col gap-6 pb-10">
               {navLinks.map((link) => (
-                <a 
-                  key={link.name} 
+                <a
+                  key={link.name}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
                   className="text-2xl font-medium text-slate-900 dark:text-slate-300"
@@ -195,7 +195,7 @@ export const Navbar = () => {
                   {link.name}
                 </a>
               ))}
-              
+
               <hr className="border-slate-200 dark:border-white/10" />
 
               <div className="space-y-3">
@@ -207,8 +207,8 @@ export const Navbar = () => {
                       onClick={() => setFont(f.id)}
                       className={cn(
                         "px-3 py-2 text-sm rounded-lg border transition-all",
-                        font === f.id 
-                          ? "border-cyan-500 bg-cyan-50 dark:bg-cyan-900/20 text-cyan-600 dark:text-cyan-400" 
+                        font === f.id
+                          ? "border-cyan-500 bg-cyan-50 dark:bg-cyan-900/20 text-cyan-600 dark:text-cyan-400"
                           : "border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-400"
                       )}
                     >
@@ -219,7 +219,7 @@ export const Navbar = () => {
               </div>
 
               <hr className="border-slate-200 dark:border-white/10" />
-              
+
               <Button size="lg" variant="gradient" className="w-full" onClick={() => {
                 setMobileMenuOpen(false);
                 handleContact();
